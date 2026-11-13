@@ -276,7 +276,8 @@ export default function MissionHubScreen({ tour, tourProgress, teamName, onOpenM
 
     // Distance gate (both tour types): same 300m reach radius as the challenge,
     // so GPS drift won't block you when you're actually there.
-    if (gpsActive && mission.coordinates) {
+    // Skipped entirely when the tour has "Bypass GPS" switched on (testing).
+    if (!tour.bypassGps && gpsActive && mission.coordinates) {
       const dist = distances[missionId] ?? Infinity
       if (dist > REACH_RADIUS) {
         setBlockedHint({ id: missionId, message: t('hub_toast_warn', { distance: formatDistance(dist) }) })

@@ -234,3 +234,13 @@
   0%   { transform: scale(0.6); opacity: 1; }
   100% { transform: scale(2);   opacity: 0; }
 }
+
+/* Dark map theme: invert the OpenStreetMap tiles into a dark basemap */
+.map-tiles-dark {
+  filter: invert(1) hue-rotate(180deg) brightness(0.95) contrast(0.9) saturate(0.6);
+}
+/* Keep the OSM attribution small and unobtrusive */
+.leaflet-control-attribution {
+  font-size: 9px;
+  background: rgba(255, 255, 255, 0.6) !important;
+}

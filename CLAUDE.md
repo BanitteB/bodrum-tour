@@ -8,7 +8,7 @@ separate admin SPA for managing tours, stops, purchases, analytics, and content.
 
 - **React 18 + Vite 5 + TailwindCSS 3** SPA. No SSR.
 - **i18next** — 4 languages: `en`, `de`, `tr`, `fr` (detection via localStorage key `bodrum-lang`).
-- **react-leaflet + leaflet-rotate** for maps (CartoDB dark/light tiles).
+- **react-leaflet + leaflet-rotate** for maps (OpenStreetMap tiles; dark mode via CSS filter).
 - **Supabase** — Postgres + Storage + Auth + RLS. Project ref `bkipxsboxfqmknhasyop` (eu-central-1), already linked to the CLI.
 - **PWA** via `vite-plugin-pwa` (Workbox: offline-first static, NetworkFirst for Supabase API).
 - **recharts** for admin analytics.

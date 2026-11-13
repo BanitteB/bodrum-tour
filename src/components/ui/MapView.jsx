@@ -7,11 +7,11 @@ import ErrorBoundary from '../ErrorBoundary'
 import { useMapTheme } from '../../hooks/useMapTheme'
 import { useDeviceHeading } from '../../hooks/useDeviceHeading'
 
-// CartoDB basemaps — dark for low light, light (Positron) for bright sunlight.
-const TILE_URLS = {
-  dark: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
-  light: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
-}
+// OpenStreetMap standard tiles (no API key needed). CARTO basemaps started
+// returning "API KEY REQUIRED" placeholder tiles, so we switched providers.
+// Dark mode is produced by a CSS filter on the tile layer (see index.css).
+const TILE_URL = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
+const TILE_ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 
 // A valid lat/lng must be a finite number in range. Note: 0 is valid
 // (equator / prime meridian), so never rely on truthiness for coordinates.
@@ -226,7 +226,7 @@ export default function MapView({
           touchZoom={interactive}
           doubleClickZoom={false}
           keyboard={false}
-          attributionControl={false}
+          attributionControl={true}
           zoomAnimation={false}
           markerZoomAnimation={false}
           rotate={interactive}
@@ -235,7 +235,13 @@ export default function MapView({
           bearing={0}
         >
           {/* key forces a clean layer swap when the theme flips */}
-          <TileLayer key={theme} url={TILE_URLS[theme] ?? TILE_URLS.dark} />
+          <TileLayer
+            key={theme}
+            url={TILE_URL}
+            attribution={TILE_ATTRIBUTION}
+            maxZoom={19}
+            className={theme === 'light' ? 'map-tiles-light' : 'map-tiles-dark'}
+          />
           <MapController fitPositions={fitPositions} />
 
           {/* Arrival geofence ring — green once the player is inside */}

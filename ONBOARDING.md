@@ -9,7 +9,7 @@ separate admin SPA for managing tours, stops, purchases, analytics, and content.
 - **React 18 + Vite 5 + TailwindCSS 3** SPA. No SSR.
 - **i18next** — 4 languages: `en`, `de`, `tr`, `fr` (detection via localStorage key `bodrum-lang`).
 - **react-leaflet + leaflet-rotate** for maps (CartoDB dark/light tiles).
-- **Supabase** — Postgres + Storage + Auth + RLS. Project ref `bkipxsboxfqmknhasyop` (eu-central-1), already linked to the CLI.
+- **Supabase** — Postgres + Storage + Auth + RLS. Project ref `qhoawzwmzngjiodaisjl`. Link the CLI once with `supabase link --project-ref qhoawzwmzngjiodaisjl`.
 - **PWA** via `vite-plugin-pwa` (Workbox: offline-first static, NetworkFirst for Supabase API).
 - **recharts** for admin analytics.
 - Deployed to **GitHub Pages** (base path `/bodrum-tour/`) via **GitHub Actions** on push to `main`.

@@ -28,7 +28,7 @@ A Goosechase-style self-guided tour app for Bodrum, Turkey — built with React 
 
 ```bash
 # 1. Clone and install
-git clone https://github.com/Tshermee/bodrum-tour.git
+git clone https://github.com/BettyGshunt/bodrum-tour.git
 cd bodrum-tour
 npm install
 
@@ -128,7 +128,6 @@ For GitHub Pages, the base path `/bodrum-tour/` is already set in `vite.config.j
 
 ## Active Supabase Project
 
-- **Project**: `bodrum-tour`  
-- **Region**: `eu-central-1`  
-- **URL**: `https://bkipxsboxfqmknhasyop.supabase.co`
-- **Admin login**: `marco.cermusoni@bossinfo.ch` / `BodrumAdmin2026!`
+- **Project**: `BettyGshunt's Project`  
+- **URL**: `https://qhoawzwmzngjiodaisjl.supabase.co`
+- **Admin login**: users in Supabase Auth that are listed in the `admin_users` table (never commit passwords here)

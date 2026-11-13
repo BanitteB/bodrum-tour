@@ -82,7 +82,7 @@ export default function MissionScreen({
     { id: 'notfound', label: t('mission_skip_reason_notfound') },
     { id: 'other', label: t('mission_skip_reason_other') },
   ]
-  const [storyExpanded, setStoryExpanded] = useState(false)
+  const [storyExpanded, setStoryExpanded] = useState(true) // story open by default
   const [showFullMap, setShowFullMap] = useState(false)
   const [showSkipDialog, setShowSkipDialog] = useState(false)
   const [skipReason, setSkipReason] = useState('')

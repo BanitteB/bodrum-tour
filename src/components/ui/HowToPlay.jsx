@@ -9,7 +9,7 @@ import { playArrivalSound } from '../../lib/arrivalSound'
 // languages, and needs no video file. Keyframes live in index.css (htp-*).
 
 const SCENE_MS = 4500
-const VIDEO_LANGS = ['de', 'en', 'tr', 'fr']
+const VIDEO_LANGS = ['en'] // add a language once its video exists (English first, translations later)
 
 /* ── Scene illustrations ───────────────────────────────────────────── */
 

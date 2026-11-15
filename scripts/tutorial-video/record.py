@@ -14,6 +14,7 @@ LANG = sys.argv[1] if len(sys.argv) > 1 else 'de'
 OUT = sys.argv[2] if len(sys.argv) > 2 else 'out'
 TX = TEXTS[LANG]
 BASE = 'http://localhost:4173/bodrum-tour/'
+PLAY = 2  # stops actually played in the video (tour has 4, rest is implied)
 TOUR_ID = '00000000-demo-0000-0000-000000000001'
 
 # ── Fictional geography ──────────────────────────────────────────────
@@ -271,7 +272,7 @@ async def main():
         await page.wait_for_timeout(1200)
 
         # ── Intro ───────────────────────────────────────────────
-        await D.card('🧭', TX['intro_title'], TX['intro_text'], TX['intro_tag'], wait=4500)
+        await D.card('🧭', TX['intro_title'], TX['intro_text'], TX['intro_tag'], wait=3800)
         await D.uncard()
 
         # ── Welcome ─────────────────────────────────────────────
@@ -285,21 +286,21 @@ async def main():
         await D.tap(page.get_by_text(TX['tour_name']).first, pause=1800)
 
         # ── Rules ───────────────────────────────────────────────
-        await D.cap(*TX['c_rules'], top=True, wait=4200)
+        await D.cap(*TX['c_rules'], top=True, wait=3000)
         await D.hide()
         rules_btn = page.locator('div.fixed button').last
         await D.tap(rules_btn, pause=1500)
 
         # ── Hub tour ────────────────────────────────────────────
-        await D.cap(*TX['c_hub_steps'], wait=4200)
-        await D.cap(*TX['c_hub_map'], wait=4200)
+        await D.cap(*TX['c_hub_steps'], wait=3800)
+        await D.cap(*TX['c_hub_map'], wait=3300)
 
         challenge = page.locator('main, body')
         prev = START
-        for i, st in enumerate(TX['stops']):
+        for i, st in enumerate(TX['stops'][:PLAY]):
             # Walk to the stop
             await D.cap(*(TX['c_walk'] if i == 0 else TX['c_walk_next']), wait=600)
-            await D.walk(prev, STOPS[i], seconds=7.0 if i == 0 else 5.0)
+            await D.walk(prev, STOPS[i], seconds=6.0 if i == 0 else 4.5)
             prev = STOPS[i]
             await page.wait_for_timeout(500)
             await D.cap(*TX['c_arrived'], wait=3000)
@@ -329,7 +330,12 @@ async def main():
                 await D.tap(hint, pause=900)
                 await D.cap(*TX['c_hint'], top=True, wait=3000)
                 confirm = page.locator('div.fixed button').last
-                await D.tap(confirm, pause=1600)
+                await D.tap(confirm, pause=1800)
+                skip = page.get_by_text(TX['ui_skip']).first
+                await D.scroll_to(skip)
+                await D.cap(*TX['c_skip'], top=True, wait=3800)
+                await D.scroll_to(opt)
+                await D.hide()
                 await D.tap(opt, pause=700)
                 submit = page.get_by_role('button', name=TX['ui_mc_submit']).first
                 await D.tap(submit, pause=2200)
@@ -353,17 +359,13 @@ async def main():
                 await D.tap(page.get_by_role('button', name=TX['ui_photo_submit']).first, pause=2200)
 
             # Success overlay
-            await D.cap(*(TX['c_success'] if i < len(STOPS) - 1 else TX['c_final']), top=True, wait=3800)
+            await D.cap(*TX['c_success'], top=True, wait=3200)
             await D.hide()
             cont = page.locator('button.cta-pulse').last
             await D.tap(cont, pause=1800)
-            if i == 0:
-                await D.cap(*TX['c_back'], wait=4200)
 
-        # ── Completion ──────────────────────────────────────────
-        await D.cap(*TX['c_done'], wait=4500)
-        await page.mouse.wheel(0, 500)
-        await page.wait_for_timeout(2500)
+        # ── Back to the overview, then outro ───────────────────
+        await D.cap(*TX['c_back'], wait=4000)
         await D.hide()
         await D.card('🎉', TX['outro_title'], TX['outro_text'], '', wait=4500)
 

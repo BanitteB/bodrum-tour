@@ -11,6 +11,7 @@ def ui(lang):
         'ui_code_submit': d['code_challenge_submit'],
         'ui_take_photo': d['photo_challenge_take_photo'],
         'ui_photo_submit': d['photo_challenge_submit'],
+        'ui_skip': d['mission_skip'],
     }
 
 DE = {
@@ -76,7 +77,7 @@ EN = {
     'intro_text': "Let's play a small example tour all the way through – from start to finish.",
     'intro_tag': 'Everything in this video is made up',
     'outro_title': "Now it's your turn!",
-    'outro_text': 'Pick your tour, put on comfy shoes and have fun exploring.',
+    'outro_text': "That's it – the same for every stop. At the end you'll see your total score. Have fun exploring!",
     'stops': [
         {'type': 'riddle', 'name': 'The Old Clock Tower', 'place': 'Market Square',
          'story': 'For over a hundred years the clock tower has struck every hour. Fishermen say it used to guide them safely home.',
@@ -109,13 +110,14 @@ EN = {
     'c_story': ('First, the story', 'Every place has a short story. The challenge is waiting below.'),
     'c_riddle': ('5. Challenge: a riddle', 'Read the riddle and type your answer.'),
     'c_wrong': ('Wrong? No problem!', 'Just try again.'),
-    'c_mc': ('Challenge: multiple choice', 'Look around and pick the right answer.'),
-    'c_hint': ('Stuck? Get a hint', 'A hint costs a few points.'),
+    'c_mc': ('What if you get stuck?', 'Here we have no idea how many lions there are …'),
+    'c_hint': ('Get a hint', 'Tap "Need a hint?". It costs a few points, but helps you on.'),
     'c_code': ('Challenge: find the code', 'Search the spot for the code and enter it.'),
     'c_photo': ('Challenge: take a photo', 'Snap the right photo and submit it.'),
     'c_success': ('Done – points collected! ⭐', 'Tap "Continue" for the next stop.'),
     'c_final': ('Last stop done! 🎉', 'Time for your results.'),
     'c_back': ('Want to go back? Easy', 'Tap a finished stop (✓) at the top to look at it again.'),
+    'c_skip': ('Still stuck?', "As a last resort you can skip a stop – but you won't get its points."),
     'c_done': ('You made it! 🏆', 'Here you see your points and your photos.'),
 }
 EN.update(ui('en'))

@@ -117,7 +117,7 @@ export default function ImageHuntChallenge({ challenge, isCompleted, accentColor
           >
             <Lightbulb className="w-4 h-4 text-amber-400 flex-shrink-0" />
             <span className="text-amber-400 text-sm font-medium flex-1 text-left">
-              {hintUsed ? t('riddle_challenge_hint_used') : attempts >= 2 ? t('challenge_hint_unlocked') : t('riddle_challenge_hint_unused') + ' (−20 Pkt)'}
+              {hintUsed ? t('riddle_challenge_hint_used') : attempts >= 2 ? t('challenge_hint_unlocked') : t('riddle_challenge_hint_unused')}
             </span>
             {hintOpen ? <ChevronUp className="w-4 h-4 text-amber-400/60" /> : <ChevronDown className="w-4 h-4 text-amber-400/60" />}
           </button>

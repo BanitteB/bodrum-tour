@@ -11,7 +11,7 @@ pip install playwright numpy pillow && playwright install chromium
 VITE_SUPABASE_URL=https://dummy.supabase.co VITE_SUPABASE_ANON_KEY=x VITE_SUPABASE_SERVICE_ROLE_KEY=x \
   npx vite build --outDir /tmp/dist-test && npx vite preview --outDir /tmp/dist-test --port 4173 &
 cd scripts/tutorial-video
-for l in de en tr fr; do
+for l in en; do   # English first; add de tr fr once translated
   python3 record.py $l out-$l && python3 mix.py out-$l ../../public/tutorial/tutorial-$l.mp4 2.0
 done
 ```

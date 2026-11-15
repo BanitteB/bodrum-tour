@@ -214,5 +214,8 @@
   "lang_en": "English",
   "lang_tr": "Türkçe",
   "lang_fr": "Français",
-  "lang_de": "Deutsch"
+  "lang_de": "Deutsch",
+  "hub_gps_denied": "Dein Standort ist nicht verfügbar. Bitte erlaube den Standortzugriff für diese Webseite im Browser UND in den Handy-Einstellungen (iPhone: Einstellungen → Datenschutz → Ortungsdienste → Safari-Websites → „Beim Verwenden“ + Genauer Standort an; Android: Einstellungen → Standort an und für Chrome erlauben).",
+  "hub_gps_unavailable": "Dein Standort wird gesucht … Geh ins Freie, weg von hohen Gebäuden, und schalte den Energiesparmodus aus.",
+  "hub_gps_retry": "Erneut versuchen"
 }

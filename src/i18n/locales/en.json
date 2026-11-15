@@ -214,5 +214,8 @@
   "lang_en": "English",
   "lang_tr": "Türkçe",
   "lang_fr": "Français",
-  "lang_de": "Deutsch"
+  "lang_de": "Deutsch",
+  "hub_gps_denied": "Your location isn't available. Please allow location access for this website in your browser AND in your phone settings (iPhone: Settings → Privacy → Location Services → Safari Websites → \"While Using\" + Precise Location on; Android: Settings → Location on, and allow it for Chrome).",
+  "hub_gps_unavailable": "Searching for your location… Step outside, away from tall buildings, and turn off battery saver.",
+  "hub_gps_retry": "Try again"
 }

@@ -214,5 +214,8 @@
   "lang_en": "English",
   "lang_tr": "Türkçe",
   "lang_fr": "Français",
-  "lang_de": "Deutsch"
+  "lang_de": "Deutsch",
+  "hub_gps_denied": "Konumunuz alınamıyor. Lütfen bu web sitesi için konum erişimine hem tarayıcıda HEM DE telefon ayarlarında izin verin (iPhone: Ayarlar → Gizlilik → Konum Servisleri → Safari Web Siteleri → \"Kullanırken\" + Tam Konum açık; Android: Ayarlar → Konum açık ve Chrome için izin verin).",
+  "hub_gps_unavailable": "Konumunuz aranıyor… Açık alana çıkın, yüksek binalardan uzaklaşın ve pil tasarrufunu kapatın.",
+  "hub_gps_retry": "Tekrar dene"
 }

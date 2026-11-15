@@ -6,7 +6,7 @@ import {
   Trophy, ArrowLeft, MapPin, Navigation2, Maximize2, X, SkipForward,
 } from 'lucide-react'
 import MapView from '../ui/MapView'
-import { useGeolocation } from '../../hooks/useGeolocation'
+import { useGeolocation, retryGeolocation } from '../../hooks/useGeolocation'
 import { getDistanceMeters, formatDistance } from '../../lib/geo'
 import { fetchAppConfig } from '../../lib/api'
 
@@ -192,7 +192,7 @@ export default function MissionHubScreen({ tour, tourProgress, teamName, onOpenM
   }, [])
   const rcfg = rulesCfg?.[(i18n.language || 'en').split('-')[0]] || rulesCfg?.en || {}
 
-  const { position: userPos } = useGeolocation()
+  const { position: userPos, error: gpsError } = useGeolocation()
 
   const isFreeRoam = tour.tourType === 'free_roam'
   const missions = tour.missions
@@ -353,6 +353,20 @@ export default function MissionHubScreen({ tour, tourProgress, teamName, onOpenM
         </div>
 
       </div>
+
+      {/* ── Location problem banner ──── */}
+      {!tour.bypassGps && gpsError && !userPos && (
+        <div className="flex-shrink-0 mx-4 mt-3 px-3 py-2.5 rounded-xl text-sm"
+          style={{ background: 'rgba(245,158,11,0.12)', border: '1px solid rgba(245,158,11,0.35)' }}>
+          <div className="text-amber-200 leading-snug">
+            {gpsError === 'denied' ? t('hub_gps_denied') : t('hub_gps_unavailable')}
+          </div>
+          <button onClick={retryGeolocation}
+            className="mt-2 text-amber-300 font-semibold text-xs underline underline-offset-2">
+            {t('hub_gps_retry')}
+          </button>
+        </div>
+      )}
 
       {/* ── Done so far (collapsed, above the current step) ──── */}
       {doneStops.length > 0 && (

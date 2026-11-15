@@ -214,5 +214,8 @@
   "lang_en": "English",
   "lang_tr": "Türkçe",
   "lang_fr": "Français",
-  "lang_de": "Deutsch"
+  "lang_de": "Deutsch",
+  "hub_gps_denied": "Votre position n'est pas disponible. Autorisez l'accès à la localisation pour ce site dans le navigateur ET dans les réglages du téléphone (iPhone : Réglages → Confidentialité → Service de localisation → Sites web Safari → « Lorsque l'app est active » + Position exacte activée ; Android : Paramètres → Localisation activée et autorisée pour Chrome).",
+  "hub_gps_unavailable": "Recherche de votre position… Sortez à l'extérieur, loin des grands bâtiments, et désactivez l'économiseur de batterie.",
+  "hub_gps_retry": "Réessayer"
 }

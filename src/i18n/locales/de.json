@@ -11,7 +11,6 @@
   "welcome_form_placeholder": "z.B. Die Blauen Entdecker",
   "welcome_form_error": "Bitte gib deinen Teamnamen ein",
   "welcome_form_submit": "Abenteuer beginnen",
-
   "code_challenge_label": "Code eingeben",
   "code_challenge_placeholder": "Code eingeben...",
   "code_challenge_error": "Falscher Code — versuch es erneut!",
@@ -29,7 +28,6 @@
   "code_hint_reveal": "Hinweis zeigen (−20 Pkt)",
   "photo_hint_reveal": "Hinweis zeigen (−15 Pkt)",
   "riddle_hint_reveal": "Hinweis zeigen (−20 Pkt)",
-
   "photo_challenge_hint_unused": "Hinweis benötigt?",
   "photo_challenge_hint_used": "Hinweis verwendet (−15 Pkt)",
   "photo_challenge_take_photo": "Foto aufnehmen",
@@ -39,7 +37,6 @@
   "photo_challenge_success": "Aufgabe erledigt!",
   "photo_challenge_success_text": "Foto erfolgreich eingereicht.",
   "photo_challenge_download": "Speichern",
-
   "riddle_challenge_placeholder": "Deine Antwort...",
   "riddle_challenge_error": "Nicht ganz — versuch es erneut!",
   "riddle_challenge_hint_warning": "Schau dir den Hinweis oben an",
@@ -47,7 +44,6 @@
   "riddle_challenge_hint_used": "Hinweis verwendet (−20 Pkt)",
   "riddle_challenge_submit": "Antwort einreichen",
   "riddle_challenge_success": "Richtig!",
-
   "completion_rank_legend": "Legende der Ägäis",
   "completion_rank_voyager": "Blauer Entdecker",
   "completion_rank_explorer": "Ägäis-Erkunder",
@@ -65,7 +61,6 @@
   "update_reload": "Neu laden",
   "completion_more_tours": "Weitere Touren",
   "completion_footer": "Bodrum, Türkei · Weitere Touren bald verfügbar",
-
   "hub_back_to_tours": "Touren",
   "hub_progress_of": "von",
   "hub_progress_stops": "Stopps abgeschlossen",
@@ -108,8 +103,7 @@
   "hub_free_roam_hint": "Wähle deinen nächsten Stopp",
   "hub_rules_free_roam": "Erkunde in beliebiger Reihenfolge",
   "hub_rules_free_roam_body": "Diese Tour hat keine feste Route – tippe auf der Karte oder in der Liste auf einen beliebigen Stopp, um dessen Aufgabe zu starten.",
-
-  "mission_back": "Zurück",
+  "mission_back": "Übersicht",
   "mission_test_mode": "Testmodus — GPS-Prüfung deaktiviert",
   "mission_stop": "Stopp",
   "mission_pts": "Pkt",
@@ -136,7 +130,6 @@
   "mission_skip_cancel": "Abbrechen",
   "mission_skip_button": "Stopp überspringen",
   "mission_fullscreen_nav": "Fußgänger-Navigation starten",
-
   "tour_select_welcome": "Willkommen zurück",
   "tour_select_tagline": "Wähle dein Bodrum-Abenteuer",
   "tour_select_change_name": "Ändern",
@@ -170,7 +163,6 @@
   "tour_select_kids": "Kinder",
   "tour_select_unlocked": "Freigeschaltet",
   "tour_select_done": "Fertig",
-
   "purchase_one_time": "Einmaliger Kauf",
   "purchase_price_footer": "Für immer deins · Kein Abonnement",
   "purchase_discount_placeholder": "Rabattcode",
@@ -192,14 +184,12 @@
   "purchase_feature_challenges_full": "Mix aus Fotos, Rätseln & Codes",
   "purchase_feature_map": "Offline-Karte für jeden Stopp",
   "purchase_feature_score": "Punkteverfolgung & Abschlusszertifikat",
-
   "rewards_title": "Belohnungen",
   "rewards_points_available": "verfügbare Punkte",
   "rewards_redeem": "Einlösen",
   "rewards_code_show": "Zeige diesen Code vor Ort",
   "rewards_open_link": "Link öffnen",
   "rewards_code_footer": "Zeige deinen Einlösecode vor Ort · Codes sind 30 Tage gültig",
-
   "success_complete": "Mission erfüllt!",
   "success_points_earned": "Verdiente Punkte",
   "success_total_score": "Gesamtpunktzahl:",
@@ -210,12 +200,34 @@
   "success_pick_next_message": "Wähle deinen nächsten Stopp auf der Karte.",
   "success_continue": "Weiter",
   "success_results": "Meine Ergebnisse 🏆",
-
   "lang_en": "English",
   "lang_tr": "Türkçe",
   "lang_fr": "Français",
   "lang_de": "Deutsch",
   "hub_gps_denied": "Dein Standort ist nicht verfügbar. Bitte erlaube den Standortzugriff für diese Webseite im Browser UND in den Handy-Einstellungen (iPhone: Einstellungen → Datenschutz → Ortungsdienste → Safari-Websites → „Beim Verwenden“ + Genauer Standort an; Android: Einstellungen → Standort an und für Chrome erlauben).",
   "hub_gps_unavailable": "Dein Standort wird gesucht … Geh ins Freie, weg von hohen Gebäuden, und schalte den Energiesparmodus aus.",
-  "hub_gps_retry": "Erneut versuchen"
+  "hub_gps_retry": "Erneut versuchen",
+  "success_continue_next": "Weiter zum nächsten Stopp",
+  "hub_start_stop": "Stopp {{n}} starten",
+  "hub_walk_instruction": "Lauf zum markierten Punkt auf der Karte. Sobald du dort bist, ertönt ein Ton und der Button wird grün.",
+  "hub_steps_hint": "Tippe auf einen erledigten Stopp (✓), um ihn nochmal anzusehen.",
+  "hub_done_review": "Erledigte Stopps ({{count}}) – antippen zum Ansehen",
+  "howto_button": "So funktioniert's",
+  "howto_short": "Hilfe",
+  "howto_watch": "Anschauen, wie's funktioniert",
+  "howto_title": "So funktioniert's",
+  "howto_next": "Weiter",
+  "howto_done": "Los geht's!",
+  "howto_replay": "Nochmal ansehen",
+  "howto_close": "Schließen",
+  "howto_s1_title": "Tour auswählen",
+  "howto_s1_body": "Gib einen Teamnamen ein und wähle eine Tour. In der Übersicht siehst du dann alle Stopps als nummerierte Schritte.",
+  "howto_s2_title": "Zum Stopp laufen",
+  "howto_s2_body": "Folge der Karte zum markierten Stopp. Der blaue Punkt bist du. Tippe auf die Karte für die Vollbildansicht.",
+  "howto_s3_title": "Angekommen!",
+  "howto_s3_body": "Ab etwa 10 Metern ertönt ein Ton und der große Button wird grün. Tippe darauf, um die Aufgabe zu starten.",
+  "howto_s4_title": "Aufgabe lösen",
+  "howto_s4_body": "Mach ein Foto, löse ein Rätsel, finde einen Code oder beantworte eine Frage. Kommst du nicht weiter? Hol dir einen Tipp.",
+  "howto_s5_title": "Punkte sammeln & weiter",
+  "howto_s5_body": "Du bekommst Punkte, dann geht es mit „Weiter“ zum nächsten Stopp. Über die Schritte oben (✓) kommst du jederzeit zurück."
 }

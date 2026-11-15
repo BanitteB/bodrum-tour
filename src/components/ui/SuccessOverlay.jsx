@@ -133,7 +133,7 @@ export default function SuccessOverlay({ mission, nextMission, isFinal = false, 
           {/* Continue button */}
           <button
             onClick={onDismiss}
-            className="w-full py-4 rounded-xl font-bold text-white text-base flex items-center justify-center gap-2 active:scale-95 transition-transform"
+            className="w-full py-5 rounded-2xl font-bold text-white text-lg flex items-center justify-center gap-2 active:scale-95 transition-transform cta-pulse"
             style={{
               background: isFinal
                 ? 'linear-gradient(135deg, #d97706, #f59e0b)'
@@ -146,7 +146,7 @@ export default function SuccessOverlay({ mission, nextMission, isFinal = false, 
             {isFinal ? (
               <>{t('success_results')} 🏆</>
             ) : (
-              <>{t('success_continue')} <ChevronRight className="w-5 h-5" /></>
+              <>{nextMission ? t('success_continue_next') : t('success_continue')} <ChevronRight className="w-6 h-6" /></>
             )}
           </button>
         </div>

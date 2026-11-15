@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Compass, ChevronRight, Star, Clock, MapPin } from 'lucide-react'
+import { Compass, ChevronRight, Star, Clock, MapPin, PlayCircle } from 'lucide-react'
+import HowToPlay from '../ui/HowToPlay'
 import LanguageSelector from '../ui/LanguageSelector'
 import { fetchAppConfig } from '../../lib/api'
 import { unlockArrivalSound } from '../../lib/arrivalSound'
@@ -10,6 +11,7 @@ export default function WelcomeScreen({ onStart, stats }) {
   const [teamName, setTeamName] = useState('')
   const [touched, setTouched] = useState(false)
   const [appCfg, setAppCfg] = useState(null)
+  const [showHowTo, setShowHowTo] = useState(false)
 
   const lang = (i18n.language || 'en').split('-')[0]
 
@@ -121,12 +123,20 @@ export default function WelcomeScreen({ onStart, stats }) {
             {t('welcome_form_submit')}
             <ChevronRight className="w-5 h-5" />
           </button>
+
+          <button type="button" onClick={() => setShowHowTo(true)}
+            className="w-full mt-3 py-3 rounded-xl font-semibold text-cyan-200 text-sm flex items-center justify-center gap-2 active:scale-95 transition-transform"
+            style={{ background: 'rgba(34,211,238,0.08)', border: '1px solid rgba(34,211,238,0.3)' }}>
+            <PlayCircle className="w-5 h-5" />
+            {t('howto_button')}
+          </button>
         </form>
       </div>
 
       <div className="relative pb-safe px-6 pt-2 text-center animate-fade-in" style={{ animationDelay: '0.6s' }}>
         <p className="text-white/25 text-xs">{cfg.footer || t('welcome_footer')}</p>
       </div>
+      <HowToPlay open={showHowTo} onClose={() => setShowHowTo(false)} />
     </div>
   )
 }

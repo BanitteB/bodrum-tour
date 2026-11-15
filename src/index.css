@@ -244,3 +244,33 @@
   font-size: 9px;
   background: rgba(255, 255, 255, 0.6) !important;
 }
+
+/* ── How-to-play walkthrough animations (HowToPlay.jsx) ───────────── */
+@keyframes htpFinger { 0%,15% { transform: translate(30px,60px); opacity:0 } 35% { transform: translate(0,0); opacity:1 } 45% { transform: scale(0.85) } 55%,100% { transform: scale(1); opacity:1 } }
+.htp-finger { animation: htpFinger 2.4s ease-out both; }
+@keyframes htpPick { 0%,45% { border-color: rgba(255,255,255,0.08); background: rgba(255,255,255,0.06) } 55%,100% { border-color: #22d3ee; background: rgba(34,211,238,0.18); box-shadow: 0 0 16px rgba(34,211,238,0.35) } }
+.htp-pick { animation: htpPick 2.4s ease-out both; }
+@keyframes htpWalk { 0% { offset-distance: 0% } 100% { offset-distance: 100% } }
+.htp-walker { left: 0; top: 0; offset-rotate: 0deg; animation: htpWalk 3.6s ease-in-out both; }
+@keyframes htpRing { 0% { stroke: #22d3ee; fill: rgba(34,211,238,0.1) } 30%,100% { stroke: #22c55e; fill: rgba(34,197,94,0.2) } }
+.htp-ring { animation: htpRing 1.2s ease-out both; transform-origin: 95px 95px; }
+@keyframes htpBell { 0%,20% { transform: rotate(0) scale(0.6); opacity:0 } 30% { opacity:1; transform: scale(1.1) } 40% { transform: rotate(-18deg) } 50% { transform: rotate(16deg) } 60% { transform: rotate(-10deg) } 70%,100% { transform: rotate(0) scale(1); opacity:1 } }
+.htp-bell { animation: htpBell 2.4s ease-out both; }
+@keyframes htpCta { 0%,35% { transform: scale(0.6); opacity: 0 } 55% { transform: scale(1.08); opacity:1 } 65% { transform: scale(1) } 80% { transform: scale(1.04) } 100% { transform: scale(1); opacity:1 } }
+.htp-cta { animation: htpCta 2.6s ease-out both; }
+@keyframes htpChip { 0%,100% { transform: translateY(0); background: rgba(255,255,255,0.08) } 50% { transform: translateY(-6px); background: rgba(34,211,238,0.25) } }
+.htp-chip { animation: htpChip 1.4s ease-in-out infinite; }
+@keyframes htpTyping { 0%,20% { max-width: 0 } 60%,100% { max-width: 80px } }
+.htp-typing { display: inline-block; overflow: hidden; white-space: nowrap; vertical-align: bottom; border-right: 2px solid #22d3ee; animation: htpTyping 2.5s steps(6) both; }
+@keyframes htpCheck { 0%,65% { transform: scale(0); opacity:0 } 80% { transform: scale(1.2); opacity:1 } 100% { transform: scale(1); opacity:1 } }
+.htp-check { animation: htpCheck 3.2s ease-out both; }
+@keyframes htpPoints { 0% { transform: translateY(16px) scale(0.6); opacity:0 } 30% { transform: translateY(0) scale(1.15); opacity:1 } 45%,100% { transform: scale(1); opacity:1 } }
+.htp-points { animation: htpPoints 1.4s ease-out both; }
+@keyframes htpStep { 0% { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.4) } 100% { background: #22c55e; color: white; box-shadow: 0 0 10px rgba(34,197,94,0.5) } }
+.htp-step { animation: htpStep 0.4s ease-out both; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.4); }
+@keyframes htpFinger2 { 0%,70% { opacity:0; transform: translateY(14px) } 85% { opacity:1; transform: translateY(0) } 92% { transform: scale(0.85) } 100% { opacity:1; transform: scale(1) } }
+.htp-finger2 { animation: htpFinger2 3.6s ease-out both; }
+
+/* Gentle attention pulse for the main "start" button */
+@keyframes ctaPulse { 0%,100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.55) } 50% { box-shadow: 0 0 0 10px rgba(34,197,94,0) } }
+.cta-pulse { animation: ctaPulse 1.8s ease-out infinite; }

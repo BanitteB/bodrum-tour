@@ -11,7 +11,6 @@
   "welcome_form_placeholder": "e.g. The Blue Voyagers",
   "welcome_form_error": "Please enter your team name",
   "welcome_form_submit": "Begin the Journey",
-
   "code_challenge_label": "Enter the Code",
   "code_challenge_placeholder": "Enter code...",
   "code_challenge_error": "Wrong code — try again!",
@@ -29,7 +28,6 @@
   "code_hint_reveal": "Reveal Hint (−20 pts)",
   "photo_hint_reveal": "Reveal Hint (−15 pts)",
   "riddle_hint_reveal": "Reveal Hint (−20 pts)",
-
   "photo_challenge_hint_unused": "Need a hint?",
   "photo_challenge_hint_used": "Hint (−15 pts used)",
   "photo_challenge_take_photo": "Take Photo",
@@ -39,7 +37,6 @@
   "photo_challenge_success": "Challenge Complete!",
   "photo_challenge_success_text": "Photo submitted successfully.",
   "photo_challenge_download": "Save",
-
   "riddle_challenge_placeholder": "Your answer...",
   "riddle_challenge_error": "Not quite — try again!",
   "riddle_challenge_hint_warning": "Check the hint above",
@@ -47,7 +44,6 @@
   "riddle_challenge_hint_used": "Hint (−20 pts used)",
   "riddle_challenge_submit": "Submit Answer",
   "riddle_challenge_success": "Correct!",
-
   "completion_rank_legend": "Legend of the Aegean",
   "completion_rank_voyager": "Blue Voyager",
   "completion_rank_explorer": "Aegean Explorer",
@@ -65,7 +61,6 @@
   "update_reload": "Reload",
   "completion_more_tours": "More Tours",
   "completion_footer": "Bodrum, Turkey · More tours coming soon",
-
   "hub_back_to_tours": "Tours",
   "hub_progress_of": "of",
   "hub_progress_stops": "stops completed",
@@ -108,8 +103,7 @@
   "hub_free_roam_hint": "Choose your next stop",
   "hub_rules_free_roam": "Explore in any order",
   "hub_rules_free_roam_body": "This tour has no fixed route — tap any stop on the map or list to start its challenge, in whatever order you like.",
-
-  "mission_back": "Back",
+  "mission_back": "Overview",
   "mission_test_mode": "Test mode — GPS check bypassed",
   "mission_stop": "Stop",
   "mission_pts": "pts",
@@ -136,7 +130,6 @@
   "mission_skip_cancel": "Cancel",
   "mission_skip_button": "Skip Stop",
   "mission_fullscreen_nav": "Start Walking Navigation",
-
   "tour_select_welcome": "Welcome back",
   "tour_select_tagline": "Choose your Bodrum adventure",
   "tour_select_change_name": "Change",
@@ -170,7 +163,6 @@
   "tour_select_kids": "Kids",
   "tour_select_unlocked": "Unlocked",
   "tour_select_done": "Done",
-
   "purchase_one_time": "One-time purchase",
   "purchase_price_footer": "Yours forever · No subscription",
   "purchase_discount_placeholder": "Discount code",
@@ -192,14 +184,12 @@
   "purchase_feature_challenges_full": "Mix of photo, riddle & code challenges",
   "purchase_feature_map": "Offline-ready map for every stop",
   "purchase_feature_score": "Score tracking & completion certificate",
-
   "rewards_title": "Rewards",
   "rewards_points_available": "points available",
   "rewards_redeem": "Redeem",
   "rewards_code_show": "Show this code at the venue",
   "rewards_open_link": "Open link",
   "rewards_code_footer": "Present your redemption code at the venue · Codes are valid for 30 days",
-
   "success_complete": "Mission Complete!",
   "success_points_earned": "Points Earned",
   "success_total_score": "Total score:",
@@ -210,12 +200,34 @@
   "success_pick_next_message": "Choose your next stop on the map.",
   "success_continue": "Continue",
   "success_results": "See My Results 🏆",
-
   "lang_en": "English",
   "lang_tr": "Türkçe",
   "lang_fr": "Français",
   "lang_de": "Deutsch",
   "hub_gps_denied": "Your location isn't available. Please allow location access for this website in your browser AND in your phone settings (iPhone: Settings → Privacy → Location Services → Safari Websites → \"While Using\" + Precise Location on; Android: Settings → Location on, and allow it for Chrome).",
   "hub_gps_unavailable": "Searching for your location… Step outside, away from tall buildings, and turn off battery saver.",
-  "hub_gps_retry": "Try again"
+  "hub_gps_retry": "Try again",
+  "success_continue_next": "Continue to next stop",
+  "hub_start_stop": "Start stop {{n}}",
+  "hub_walk_instruction": "Walk to the marked spot on the map. When you get there, you'll hear a chime and the button turns green.",
+  "hub_steps_hint": "Tap a finished stop (✓) to look at it again.",
+  "hub_done_review": "Completed stops ({{count}}) – tap to view",
+  "howto_button": "How to play",
+  "howto_short": "Help",
+  "howto_watch": "Watch how it works",
+  "howto_title": "How to play",
+  "howto_next": "Next",
+  "howto_done": "Let's go!",
+  "howto_replay": "Watch again",
+  "howto_close": "Close",
+  "howto_s1_title": "Pick your tour",
+  "howto_s1_body": "Enter a team name and choose a tour. The overview then shows all stops as numbered steps.",
+  "howto_s2_title": "Walk to the stop",
+  "howto_s2_body": "Follow the map to the highlighted stop. The blue dot is you. Tap the map to make it full screen.",
+  "howto_s3_title": "You've arrived!",
+  "howto_s3_body": "Within about 10 metres a chime plays and the big button turns green. Tap it to start the challenge.",
+  "howto_s4_title": "Solve the challenge",
+  "howto_s4_body": "Take a photo, crack a riddle, find a code or answer a question. Stuck? Use a hint.",
+  "howto_s5_title": "Collect points & keep going",
+  "howto_s5_body": "Earn points, then tap \"Continue\" for the next stop. Tap a finished step (✓) anytime to go back to it."
 }

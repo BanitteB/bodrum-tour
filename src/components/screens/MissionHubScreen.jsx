@@ -3,8 +3,9 @@ import { createPortal } from 'react-dom'
 import { useTranslation } from 'react-i18next'
 import {
   Star, Lock, CheckCircle2, ChevronRight, ChevronDown, ChevronUp, RotateCcw,
-  Trophy, ArrowLeft, MapPin, Navigation2, Maximize2, X, SkipForward,
+  Trophy, ArrowLeft, MapPin, Navigation2, Maximize2, X, SkipForward, HelpCircle,
 } from 'lucide-react'
+import HowToPlay from '../ui/HowToPlay'
 import MapView from '../ui/MapView'
 import { useGeolocation, retryGeolocation } from '../../hooks/useGeolocation'
 import { getDistanceMeters, formatDistance } from '../../lib/geo'
@@ -48,6 +49,41 @@ function CompactMissionCard({ mission, progress, index, onOpen }) {
         </span>
       )}
     </button>
+  )
+}
+
+// Numbered step strip: shows where you are in the tour at a glance.
+// Done/skipped stops are tappable (re-open in review mode).
+function StepStrip({ missions, progress, currentId, accentColor, onOpen }) {
+  return (
+    <div className="flex items-center overflow-x-auto no-scrollbar py-1 -mx-1 px-1">
+      {missions.map((m, i) => {
+        const p = progress[m.id]
+        const done = p?.status === 'completed'
+        const skipped = done && p?.skipped
+        const current = m.id === currentId
+        return (
+          <div key={m.id} className="flex items-center flex-shrink-0">
+            <button
+              onClick={() => onOpen(m.id)}
+              aria-label={`${i + 1}. ${m.title}`}
+              className={`relative w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold active:scale-90 transition-transform ${current ? 'cta-pulse' : ''}`}
+              style={
+                skipped ? { background: 'rgba(245,158,11,0.25)', color: '#fcd34d', border: '2px solid rgba(245,158,11,0.6)' }
+                : done ? { background: '#16a34a', color: '#fff', border: '2px solid #4ade80' }
+                : current ? { background: accentColor, color: '#04121f', border: '2px solid #fff', transform: 'scale(1.12)' }
+                : { background: 'rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.45)', border: '2px solid rgba(255,255,255,0.15)' }
+              }
+            >
+              {skipped ? <SkipForward className="w-4 h-4" /> : done ? <CheckCircle2 className="w-4 h-4" /> : i + 1}
+            </button>
+            {i < missions.length - 1 && (
+              <div className="w-3 h-0.5 mx-0.5" style={{ background: done ? '#4ade80' : 'rgba(255,255,255,0.15)' }} />
+            )}
+          </div>
+        )
+      })}
+    </div>
   )
 }
 
@@ -178,6 +214,7 @@ export default function MissionHubScreen({ tour, tourProgress, teamName, onOpenM
   const [arrivedTarget, setArrivedTarget] = useState(false)
   const [rulesCfg, setRulesCfg] = useState(null)
   const [showDone, setShowDone] = useState(false)
+  const [showHowTo, setShowHowTo] = useState(false)
 
   // Show rules the first time a user enters a new tour
   useEffect(() => {
@@ -331,6 +368,15 @@ export default function MissionHubScreen({ tour, tourProgress, teamName, onOpenM
               <span className="text-amber-400 font-bold text-sm">{tourProgress.totalScore}</span>
             </div>
             <button
+              onClick={() => setShowHowTo(true)}
+              aria-label={t('howto_button')}
+              className="h-9 px-2.5 rounded-xl flex items-center gap-1 active:scale-90 transition-transform"
+              style={{ background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.18)' }}
+            >
+              <HelpCircle className="w-4 h-4 text-white" />
+              <span className="text-white text-xs font-semibold">{t('howto_short')}</span>
+            </button>
+            <button
               onClick={() => setShowReset(true)}
               className="w-9 h-9 rounded-xl flex items-center justify-center active:scale-90 transition-transform"
               style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.1)' }}
@@ -349,7 +395,7 @@ export default function MissionHubScreen({ tour, tourProgress, teamName, onOpenM
         <div>
           <div className="flex justify-between items-center mb-2">
             <span className="text-white/50 text-xs">
-              {t('hub_progress_of', { completed, total: missions.length })} {t('hub_progress_stops')}
+              {completed} {t('hub_progress_of')} {missions.length} {t('hub_progress_stops')}
             </span>
             <span className="text-xs font-semibold" style={{ color: tour.accentColor }}>
               {progressPct}%
@@ -365,6 +411,20 @@ export default function MissionHubScreen({ tour, tourProgress, teamName, onOpenM
               }}
             />
           </div>
+        </div>
+
+        {/* Step strip */}
+        <div className="mt-4">
+          <StepStrip
+            missions={missions}
+            progress={tourProgress.missions}
+            currentId={currentStop?.id}
+            accentColor={tour.accentColor}
+            onOpen={handleOpenMission}
+          />
+          {doneStops.length > 0 && (
+            <div className="text-white/55 text-[11px] mt-1.5">{t('hub_steps_hint')}</div>
+          )}
         </div>
 
       </div>
@@ -389,13 +449,13 @@ export default function MissionHubScreen({ tour, tourProgress, teamName, onOpenM
           <button
             onClick={() => setShowDone(v => !v)}
             className="w-full flex items-center gap-2 px-3 py-2.5 rounded-xl active:scale-[0.99] transition-transform"
-            style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}
+            style={{ background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.25)' }}
           >
-            <CheckCircle2 className="w-4 h-4 text-green-400/70 flex-shrink-0" />
-            <span className="text-white/55 text-xs font-semibold tracking-widest uppercase flex-1 text-left">
-              {t('hub_done')} · {doneStops.length}
+            <CheckCircle2 className="w-4 h-4 text-green-400 flex-shrink-0" />
+            <span className="text-white/80 text-sm font-semibold flex-1 text-left">
+              {t('hub_done_review', { count: doneStops.length })}
             </span>
-            {showDone ? <ChevronUp className="w-4 h-4 text-white/35" /> : <ChevronDown className="w-4 h-4 text-white/35" />}
+            {showDone ? <ChevronUp className="w-5 h-5 text-white/60" /> : <ChevronDown className="w-5 h-5 text-white/60" />}
           </button>
           {showDone && (
             <div className="flex flex-col gap-2 mt-2">
@@ -466,6 +526,15 @@ export default function MissionHubScreen({ tour, tourProgress, teamName, onOpenM
             </div>
           )}
 
+          {/* What to do now */}
+          {!arrivedTarget && (
+            <div className="px-4 py-2.5 text-white/75 text-xs leading-snug flex items-start gap-2"
+              style={{ background: 'rgba(255,255,255,0.03)', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+              <Navigation2 className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style={{ color: currentStop.accentColor }} />
+              <span>{t('hub_walk_instruction')}</span>
+            </div>
+          )}
+
           {/* This stop's map */}
           <div className="relative">
             <MapView
@@ -489,32 +558,37 @@ export default function MissionHubScreen({ tour, tourProgress, teamName, onOpenM
             </button>
           </div>
 
-          {/* Footer — arrival CTA when here, else GPS status */}
-          {arrivedTarget ? (
+          {/* Footer — big start button (green + pulsing once you're there) and GPS status */}
+          <div className="p-3" style={{ background: 'rgba(6,15,30,0.85)' }}>
             <button
               onClick={() => handleOpenMission(currentStop.id)}
-              className="w-full flex items-center justify-center gap-2 px-3 py-3 active:opacity-90 transition-opacity"
-              style={{ background: 'rgba(34,197,94,0.16)', borderTop: '1px solid rgba(34,197,94,0.3)' }}
+              className={`w-full flex items-center justify-center gap-2 py-4 rounded-xl font-bold text-white text-lg active:scale-[0.98] transition-transform ${arrivedTarget ? 'cta-pulse' : ''}`}
+              style={arrivedTarget
+                ? { background: 'linear-gradient(135deg, #16a34a, #22c55e)' }
+                : { background: `linear-gradient(135deg, ${currentStop.gradient?.[0] || tour.gradient[0]}, ${currentStop.gradient?.[1] || tour.gradient[1]})`, opacity: tour.bypassGps || !gpsActive ? 1 : 0.85 }}
             >
-              <CheckCircle2 className="w-4 h-4 text-green-400" />
-              <span className="text-green-300 text-sm font-semibold">{t('hub_arrived_here')}</span>
-              <ChevronRight className="w-4 h-4 text-green-300" />
+              {arrivedTarget && <CheckCircle2 className="w-5 h-5" />}
+              {arrivedTarget
+                ? t('hub_arrived_here')
+                : t('hub_start_stop', { n: missions.findIndex(m => m.id === currentStop.id) + 1 })}
+              <ChevronRight className="w-6 h-6" />
             </button>
-          ) : (
-            <div className="flex items-center gap-2 px-3 py-2" style={{ background: 'rgba(6,15,30,0.85)' }}>
-              {gpsActive ? (
-                <>
-                  <div className="w-2 h-2 rounded-full bg-blue-400 animate-pulse flex-shrink-0" />
-                  <span className="text-white/50 text-xs">{t('hub_gps_active')}</span>
-                </>
-              ) : (
-                <>
-                  <MapPin className="w-3 h-3 text-white/25 flex-shrink-0" />
-                  <span className="text-white/25 text-xs">{t('hub_gps_inactive')}</span>
-                </>
-              )}
-            </div>
-          )}
+            {!arrivedTarget && (
+              <div className="flex items-center justify-center gap-2 mt-2">
+                {gpsActive ? (
+                  <>
+                    <div className="w-2 h-2 rounded-full bg-blue-400 animate-pulse flex-shrink-0" />
+                    <span className="text-white/50 text-xs">{t('hub_gps_active')}</span>
+                  </>
+                ) : (
+                  <>
+                    <MapPin className="w-3 h-3 text-white/25 flex-shrink-0" />
+                    <span className="text-white/35 text-xs">{t('hub_gps_inactive')}</span>
+                  </>
+                )}
+              </div>
+            )}
+          </div>
         </div>
       )}
 
@@ -735,6 +809,13 @@ export default function MissionHubScreen({ tour, tourProgress, teamName, onOpenM
             </div>
 
             <button
+              onClick={() => setShowHowTo(true)}
+              className="w-full mb-3 py-3 rounded-xl font-semibold text-sm text-cyan-200 flex items-center justify-center gap-2 active:scale-[0.98] transition-transform"
+              style={{ background: 'rgba(34,211,238,0.1)', border: '1px solid rgba(34,211,238,0.3)' }}
+            >
+              ▶ {t('howto_watch')}
+            </button>
+            <button
               onClick={() => { localStorage.setItem(`bodrum-rules-seen-${tour.id}`, '1'); setShowRules(false) }}
               className="w-full py-4 rounded-xl font-bold text-base active:scale-[0.98] transition-transform"
               style={{
@@ -749,6 +830,8 @@ export default function MissionHubScreen({ tour, tourProgress, teamName, onOpenM
         </div>,
         document.body
       )}
+
+      <HowToPlay open={showHowTo} onClose={() => setShowHowTo(false)} />
     </div>
   )
 }

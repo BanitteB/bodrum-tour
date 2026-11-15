@@ -11,7 +11,6 @@
   "welcome_form_placeholder": "ex. Les Voyageurs Bleus",
   "welcome_form_error": "Veuillez entrer le nom de votre équipe",
   "welcome_form_submit": "Commencer l'aventure",
-
   "code_challenge_label": "Entrez le code",
   "code_challenge_placeholder": "Entrez le code...",
   "code_challenge_error": "Code incorrect — réessayez !",
@@ -29,7 +28,6 @@
   "code_hint_reveal": "Révéler l'indice (−20 pts)",
   "photo_hint_reveal": "Révéler l'indice (−15 pts)",
   "riddle_hint_reveal": "Révéler l'indice (−20 pts)",
-
   "photo_challenge_hint_unused": "Besoin d'un indice ?",
   "photo_challenge_hint_used": "Indice utilisé (−15 pts)",
   "photo_challenge_take_photo": "Prendre une photo",
@@ -39,7 +37,6 @@
   "photo_challenge_success": "Défi relevé !",
   "photo_challenge_success_text": "Photo soumise avec succès.",
   "photo_challenge_download": "Enregistrer",
-
   "riddle_challenge_placeholder": "Votre réponse...",
   "riddle_challenge_error": "Pas tout à fait — réessayez !",
   "riddle_challenge_hint_warning": "Consultez l'indice ci-dessus",
@@ -47,7 +44,6 @@
   "riddle_challenge_hint_used": "Indice utilisé (−20 pts)",
   "riddle_challenge_submit": "Soumettre la réponse",
   "riddle_challenge_success": "Correct !",
-
   "completion_rank_legend": "Légende de l'Égée",
   "completion_rank_voyager": "Voyageur Bleu",
   "completion_rank_explorer": "Explorateur de l'Égée",
@@ -65,7 +61,6 @@
   "update_reload": "Recharger",
   "completion_more_tours": "Plus de circuits",
   "completion_footer": "Bodrum, Turquie · D'autres circuits bientôt disponibles",
-
   "hub_back_to_tours": "Circuits",
   "hub_progress_of": "sur",
   "hub_progress_stops": "étapes terminées",
@@ -108,8 +103,7 @@
   "hub_free_roam_hint": "Choisissez votre prochain arrêt",
   "hub_rules_free_roam": "Explorez dans n'importe quel ordre",
   "hub_rules_free_roam_body": "Ce circuit n'a pas d'itinéraire fixe — touchez n'importe quel arrêt sur la carte ou la liste pour démarrer son défi, dans l'ordre que vous voulez.",
-
-  "mission_back": "Retour",
+  "mission_back": "Vue d'ensemble",
   "mission_test_mode": "Mode test — vérification GPS désactivée",
   "mission_stop": "Étape",
   "mission_pts": "pts",
@@ -136,7 +130,6 @@
   "mission_skip_cancel": "Annuler",
   "mission_skip_button": "Passer l'étape",
   "mission_fullscreen_nav": "Démarrer la navigation à pied",
-
   "tour_select_welcome": "Bon retour",
   "tour_select_tagline": "Choisissez votre aventure à Bodrum",
   "tour_select_change_name": "Modifier",
@@ -170,7 +163,6 @@
   "tour_select_kids": "Enfants",
   "tour_select_unlocked": "Débloqué",
   "tour_select_done": "Terminé",
-
   "purchase_one_time": "Achat unique",
   "purchase_price_footer": "À vous pour toujours · Sans abonnement",
   "purchase_discount_placeholder": "Code de réduction",
@@ -192,14 +184,12 @@
   "purchase_feature_challenges_full": "Mélange de photos, énigmes et codes",
   "purchase_feature_map": "Carte hors ligne pour chaque étape",
   "purchase_feature_score": "Suivi du score et certificat de complétion",
-
   "rewards_title": "Récompenses",
   "rewards_points_available": "points disponibles",
   "rewards_redeem": "Utiliser",
   "rewards_code_show": "Montrez ce code au lieu",
   "rewards_open_link": "Ouvrir le lien",
   "rewards_code_footer": "Présentez votre code de rédemption sur place · Les codes sont valables 30 jours",
-
   "success_complete": "Mission accomplie !",
   "success_points_earned": "Points gagnés",
   "success_total_score": "Score total :",
@@ -210,12 +200,34 @@
   "success_pick_next_message": "Choisissez votre prochain arrêt sur la carte.",
   "success_continue": "Continuer",
   "success_results": "Voir mes résultats 🏆",
-
   "lang_en": "English",
   "lang_tr": "Türkçe",
   "lang_fr": "Français",
   "lang_de": "Deutsch",
   "hub_gps_denied": "Votre position n'est pas disponible. Autorisez l'accès à la localisation pour ce site dans le navigateur ET dans les réglages du téléphone (iPhone : Réglages → Confidentialité → Service de localisation → Sites web Safari → « Lorsque l'app est active » + Position exacte activée ; Android : Paramètres → Localisation activée et autorisée pour Chrome).",
   "hub_gps_unavailable": "Recherche de votre position… Sortez à l'extérieur, loin des grands bâtiments, et désactivez l'économiseur de batterie.",
-  "hub_gps_retry": "Réessayer"
+  "hub_gps_retry": "Réessayer",
+  "success_continue_next": "Continuer vers l'étape suivante",
+  "hub_start_stop": "Commencer l'étape {{n}}",
+  "hub_walk_instruction": "Marche jusqu'au point indiqué sur la carte. Une fois arrivé, un son retentit et le bouton devient vert.",
+  "hub_steps_hint": "Touche une étape terminée (✓) pour la revoir.",
+  "hub_done_review": "Étapes terminées ({{count}}) – toucher pour voir",
+  "howto_button": "Comment jouer",
+  "howto_short": "Aide",
+  "howto_watch": "Voir comment ça marche",
+  "howto_title": "Comment jouer",
+  "howto_next": "Suivant",
+  "howto_done": "C'est parti !",
+  "howto_replay": "Revoir",
+  "howto_close": "Fermer",
+  "howto_s1_title": "Choisis ta visite",
+  "howto_s1_body": "Entre un nom d'équipe et choisis une visite. La vue d'ensemble affiche toutes les étapes numérotées.",
+  "howto_s2_title": "Marche jusqu'à l'étape",
+  "howto_s2_body": "Suis la carte jusqu'à l'étape indiquée. Le point bleu, c'est toi. Touche la carte pour l'afficher en plein écran.",
+  "howto_s3_title": "Tu es arrivé !",
+  "howto_s3_body": "À environ 10 mètres, un son retentit et le grand bouton devient vert. Touche-le pour lancer le défi.",
+  "howto_s4_title": "Résous le défi",
+  "howto_s4_body": "Prends une photo, résous une énigme, trouve un code ou réponds à une question. Bloqué ? Utilise un indice.",
+  "howto_s5_title": "Gagne des points et continue",
+  "howto_s5_body": "Gagne des points, puis touche « Continuer » pour l'étape suivante. Les étapes en haut (✓) te permettent de revenir en arrière."
 }

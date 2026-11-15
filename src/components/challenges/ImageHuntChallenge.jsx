@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { createPortal } from 'react-dom'
+import { useTranslation } from 'react-i18next'
 import { Eye, CheckCircle2, XCircle, Lightbulb, ChevronDown, ChevronUp, Send } from 'lucide-react'
 
 const normalize = (s) => s.trim().toLowerCase().replace(/[^a-z0-9]/g, '')
@@ -22,6 +23,7 @@ function checkAnswer(input, answerField) {
 }
 
 export default function ImageHuntChallenge({ challenge, isCompleted, accentColor, gradient, onComplete }) {
+  const { t } = useTranslation()
   const [answer, setAnswer] = useState('')
   const [attempts, setAttempts] = useState(0)
   const [lastWrong, setLastWrong] = useState(false)
@@ -56,7 +58,7 @@ export default function ImageHuntChallenge({ challenge, isCompleted, accentColor
       >
         <CheckCircle2 className="w-8 h-8 text-green-400 flex-shrink-0" />
         <div>
-          <div className="text-green-400 font-semibold">You found it!</div>
+          <div className="text-green-400 font-semibold">{t('hunt_found')}</div>
           <div className="text-white/50 text-sm capitalize">"{displayAnswer}"</div>
         </div>
       </div>
@@ -76,7 +78,7 @@ export default function ImageHuntChallenge({ challenge, isCompleted, accentColor
         <div className="flex items-center gap-2 mb-3">
           <Eye className="w-4 h-4" style={{ color: accentColor }} />
           <span className="text-xs font-semibold tracking-wider uppercase" style={{ color: accentColor }}>
-            Image Hunt
+            {t('hunt_label')}
           </span>
         </div>
         <p className="text-white/85 text-sm leading-relaxed whitespace-pre-line font-medium">
@@ -97,7 +99,7 @@ export default function ImageHuntChallenge({ challenge, isCompleted, accentColor
             className="px-3 py-2 text-xs text-white/40 text-center"
             style={{ background: 'rgba(0,0,0,0.5)' }}
           >
-            Find this in the real world — then type what it is
+            {t('hunt_instruction')}
           </div>
         </div>
       )}
@@ -115,7 +117,7 @@ export default function ImageHuntChallenge({ challenge, isCompleted, accentColor
           >
             <Lightbulb className="w-4 h-4 text-amber-400 flex-shrink-0" />
             <span className="text-amber-400 text-sm font-medium flex-1 text-left">
-              {hintUsed ? 'Hint used' : attempts >= 2 ? 'Hint unlocked — tap to reveal' : 'Need a hint? (−20 pts)'}
+              {hintUsed ? t('riddle_challenge_hint_used') : attempts >= 2 ? t('challenge_hint_unlocked') : t('riddle_challenge_hint_unused') + ' (−20 Pkt)'}
             </span>
             {hintOpen ? <ChevronUp className="w-4 h-4 text-amber-400/60" /> : <ChevronDown className="w-4 h-4 text-amber-400/60" />}
           </button>
@@ -141,7 +143,7 @@ export default function ImageHuntChallenge({ challenge, isCompleted, accentColor
               type="text"
               value={answer}
               onChange={e => { setAnswer(e.target.value); setLastWrong(false) }}
-              placeholder="What is this?"
+              placeholder={t('hunt_placeholder')}
               className="flex-1 bg-transparent text-white placeholder-white/25 text-base focus:outline-none"
               autoCapitalize="off"
               autoCorrect="off"
@@ -151,7 +153,7 @@ export default function ImageHuntChallenge({ challenge, isCompleted, accentColor
           </div>
           {lastWrong && (
             <p className="text-red-400/80 text-xs mt-1.5 ml-1 animate-fade-in">
-              Not quite — look closer and try again.
+              {t('hunt_error')}
             </p>
           )}
         </div>
@@ -166,13 +168,13 @@ export default function ImageHuntChallenge({ challenge, isCompleted, accentColor
           }}
         >
           <Send className="w-4 h-4" />
-          Submit Answer
+          {t('riddle_challenge_submit')}
         </button>
       </form>
 
       {attempts > 0 && (
         <p className="text-white/25 text-xs text-center">
-          {attempts} attempt{attempts !== 1 ? 's' : ''} · Keep going!
+          {t('challenge_attempts', { count: attempts })}
         </p>
       )}
 
@@ -193,9 +195,9 @@ export default function ImageHuntChallenge({ challenge, isCompleted, accentColor
                 <Lightbulb className="w-5 h-5 text-amber-400" />
               </div>
               <div>
-                <h3 className="text-white font-bold text-lg">Use a hint?</h3>
+                <h3 className="text-white font-bold text-lg">{t('hint_warning_title')}</h3>
                 <p className="text-white/50 text-sm mt-0.5">
-                  This will deduct <span className="text-amber-400 font-semibold">20 points</span> from your score.
+                  {t('hint_warning_deduct')} <span className="text-amber-400 font-semibold">20 {t('hint_warning_from_score')}</span>
                 </p>
               </div>
             </div>
@@ -205,14 +207,14 @@ export default function ImageHuntChallenge({ challenge, isCompleted, accentColor
                 className="flex-1 py-3.5 rounded-xl font-semibold text-sm text-white"
                 style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.1)' }}
               >
-                Cancel
+                {t('hint_cancel')}
               </button>
               <button
                 onClick={() => { setHintUsed(true); setHintOpen(true); setShowHintWarning(false) }}
                 className="flex-1 py-3.5 rounded-xl font-semibold text-sm text-white"
                 style={{ background: 'linear-gradient(135deg, #b45309, #d97706)' }}
               >
-                Reveal Hint
+                {t('riddle_hint_reveal')}
               </button>
             </div>
           </div>

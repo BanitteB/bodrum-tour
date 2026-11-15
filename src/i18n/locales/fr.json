@@ -229,5 +229,17 @@
   "howto_s4_title": "Résous le défi",
   "howto_s4_body": "Prends une photo, résous une énigme, trouve un code ou réponds à une question. Bloqué ? Utilise un indice.",
   "howto_s5_title": "Gagne des points et continue",
-  "howto_s5_body": "Gagne des points, puis touche « Continuer » pour l'étape suivante. Les étapes en haut (✓) te permettent de revenir en arrière."
+  "howto_s5_body": "Gagne des points, puis touche « Continuer » pour l'étape suivante. Les étapes en haut (✓) te permettent de revenir en arrière.",
+  "challenge_hint_unlocked": "Indice débloqué — touche pour le voir",
+  "challenge_attempts": "{{count}} essais · Continue !",
+  "mc_submit": "Confirmer la réponse",
+  "mc_error": "Pas tout à fait — essaie une autre réponse.",
+  "hunt_instruction": "Trouve ceci dans la vraie vie — puis écris ce que c'est",
+  "hunt_placeholder": "Qu'est-ce que c'est ?",
+  "hunt_error": "Pas tout à fait — regarde de plus près et réessaie.",
+  "hunt_found": "Trouvé !",
+  "hunt_label": "Chasse à l'image",
+  "mc_label": "Choisis la bonne réponse",
+  "completion_finished": "a terminé",
+  "howto_video": "Voir le tutoriel vidéo complet (3 min)"
 }

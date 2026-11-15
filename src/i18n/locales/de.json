@@ -229,5 +229,17 @@
   "howto_s4_title": "Aufgabe lösen",
   "howto_s4_body": "Mach ein Foto, löse ein Rätsel, finde einen Code oder beantworte eine Frage. Kommst du nicht weiter? Hol dir einen Tipp.",
   "howto_s5_title": "Punkte sammeln & weiter",
-  "howto_s5_body": "Du bekommst Punkte, dann geht es mit „Weiter“ zum nächsten Stopp. Über die Schritte oben (✓) kommst du jederzeit zurück."
+  "howto_s5_body": "Du bekommst Punkte, dann geht es mit „Weiter“ zum nächsten Stopp. Über die Schritte oben (✓) kommst du jederzeit zurück.",
+  "challenge_hint_unlocked": "Hinweis freigeschaltet — antippen zum Anzeigen",
+  "challenge_attempts": "{{count}} Versuche · Weiter so!",
+  "mc_submit": "Antwort bestätigen",
+  "mc_error": "Nicht ganz — versuch eine andere Antwort.",
+  "hunt_instruction": "Finde das in der echten Welt — und schreib, was es ist",
+  "hunt_placeholder": "Was ist das?",
+  "hunt_error": "Nicht ganz — schau genauer hin und versuch es nochmal.",
+  "hunt_found": "Gefunden!",
+  "hunt_label": "Bildersuche",
+  "mc_label": "Wähle die richtige Antwort",
+  "completion_finished": "hat abgeschlossen:",
+  "howto_video": "Ganzes Video-Tutorial ansehen (3 Min.)"
 }

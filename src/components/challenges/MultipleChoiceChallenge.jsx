@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { createPortal } from 'react-dom'
+import { useTranslation } from 'react-i18next'
 import { CheckSquare, CheckCircle2, Lightbulb, ChevronDown, ChevronUp } from 'lucide-react'
 
 const normalize = (s) => s.trim().toLowerCase().replace(/[^a-z0-9]/g, '')
 
 export default function MultipleChoiceChallenge({ challenge, isCompleted, accentColor, gradient, onComplete }) {
+  const { t } = useTranslation()
   const [selected, setSelected] = useState(null)
   const [attempts, setAttempts] = useState(0)
   const [lastWrong, setLastWrong] = useState(false)
@@ -35,7 +37,7 @@ export default function MultipleChoiceChallenge({ challenge, isCompleted, accent
       >
         <CheckCircle2 className="w-8 h-8 text-green-400 flex-shrink-0" />
         <div>
-          <div className="text-green-400 font-semibold">Correct!</div>
+          <div className="text-green-400 font-semibold">{t('riddle_challenge_success')}</div>
           <div className="text-white/50 text-sm">"{challenge.answer}"</div>
         </div>
       </div>
@@ -55,7 +57,7 @@ export default function MultipleChoiceChallenge({ challenge, isCompleted, accent
         <div className="flex items-center gap-2 mb-3">
           <CheckSquare className="w-4 h-4" style={{ color: accentColor }} />
           <span className="text-xs font-semibold tracking-wider uppercase" style={{ color: accentColor }}>
-            Choose the answer
+            {t('mc_label')}
           </span>
         </div>
         <p className="text-white/85 text-sm leading-relaxed whitespace-pre-line font-medium">
@@ -89,7 +91,7 @@ export default function MultipleChoiceChallenge({ challenge, isCompleted, accent
 
       {lastWrong && (
         <p className="text-red-400/80 text-xs ml-1 animate-fade-in">
-          Not quite — try another option.
+          {t('mc_error')}
         </p>
       )}
 
@@ -106,7 +108,7 @@ export default function MultipleChoiceChallenge({ challenge, isCompleted, accent
           >
             <Lightbulb className="w-4 h-4 text-amber-400 flex-shrink-0" />
             <span className="text-amber-400 text-sm font-medium flex-1 text-left">
-              {hintUsed ? 'Hint used' : attempts >= 2 ? 'Hint unlocked — tap to reveal' : 'Need a hint? (−20 pts)'}
+              {hintUsed ? t('riddle_challenge_hint_used') : attempts >= 2 ? t('challenge_hint_unlocked') : t('riddle_challenge_hint_unused') + ' (−20 Pkt)'}
             </span>
             {hintOpen ? <ChevronUp className="w-4 h-4 text-amber-400/60" /> : <ChevronDown className="w-4 h-4 text-amber-400/60" />}
           </button>
@@ -129,12 +131,12 @@ export default function MultipleChoiceChallenge({ challenge, isCompleted, accent
         }}
       >
         <CheckSquare className="w-4 h-4" />
-        Confirm Answer
+        {t('mc_submit')}
       </button>
 
       {attempts > 0 && (
         <p className="text-white/25 text-xs text-center">
-          {attempts} attempt{attempts !== 1 ? 's' : ''} · Keep going!
+          {t('challenge_attempts', { count: attempts })}
         </p>
       )}
 
@@ -155,9 +157,9 @@ export default function MultipleChoiceChallenge({ challenge, isCompleted, accent
                 <Lightbulb className="w-5 h-5 text-amber-400" />
               </div>
               <div>
-                <h3 className="text-white font-bold text-lg">Use a hint?</h3>
+                <h3 className="text-white font-bold text-lg">{t('hint_warning_title')}</h3>
                 <p className="text-white/50 text-sm mt-0.5">
-                  This will deduct <span className="text-amber-400 font-semibold">20 points</span> from your score.
+                  {t('hint_warning_deduct')} <span className="text-amber-400 font-semibold">20 {t('hint_warning_from_score')}</span>
                 </p>
               </div>
             </div>
@@ -167,14 +169,14 @@ export default function MultipleChoiceChallenge({ challenge, isCompleted, accent
                 className="flex-1 py-3.5 rounded-xl font-semibold text-sm text-white"
                 style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.1)' }}
               >
-                Cancel
+                {t('hint_cancel')}
               </button>
               <button
                 onClick={() => { setHintUsed(true); setHintOpen(true); setShowHintWarning(false) }}
                 className="flex-1 py-3.5 rounded-xl font-semibold text-sm text-white"
                 style={{ background: 'linear-gradient(135deg, #b45309, #d97706)' }}
               >
-                Reveal Hint
+                {t('riddle_hint_reveal')}
               </button>
             </div>
           </div>

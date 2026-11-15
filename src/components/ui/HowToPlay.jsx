@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { useTranslation } from 'react-i18next'
-import { X, Play, Pause, RotateCcw, ChevronRight, CheckCircle2, Star, Bell, MapPin } from 'lucide-react'
+import { X, Play, Pause, RotateCcw, ChevronRight, CheckCircle2, Star, Bell, MapPin, Film, ArrowLeft } from 'lucide-react'
 import { playArrivalSound } from '../../lib/arrivalSound'
 
 // "How to play" — a short, auto-playing animated walkthrough (like a mini
@@ -9,6 +9,7 @@ import { playArrivalSound } from '../../lib/arrivalSound'
 // languages, and needs no video file. Keyframes live in index.css (htp-*).
 
 const SCENE_MS = 4500
+const VIDEO_LANGS = ['de', 'en', 'tr', 'fr']
 
 /* ── Scene illustrations ───────────────────────────────────────────── */
 
@@ -135,13 +136,14 @@ const SCENES = [
 /* ── Player ────────────────────────────────────────────────────────── */
 
 export default function HowToPlay({ open, onClose }) {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const [showVideo, setShowVideo] = useState(false)
   const [idx, setIdx] = useState(0)
   const [playing, setPlaying] = useState(true)
   const [elapsed, setElapsed] = useState(0)
   const last = useRef(null)
 
-  useEffect(() => { if (open) { setIdx(0); setElapsed(0); setPlaying(true) } }, [open])
+  useEffect(() => { if (open) { setIdx(0); setElapsed(0); setPlaying(true); setShowVideo(false) } }, [open])
 
   // Timeline clock
   useEffect(() => {
@@ -168,12 +170,46 @@ export default function HowToPlay({ open, onClose }) {
 
   // Demo the arrival chime on the "you've arrived" scene
   useEffect(() => {
-    if (!open || !SCENES[idx].chime) return
+    if (!open || showVideo || !SCENES[idx].chime) return
     const tm = setTimeout(() => playArrivalSound(), 900)
     return () => clearTimeout(tm)
-  }, [open, idx])
+  }, [open, idx, showVideo])
 
   if (!open) return null
+
+  const lang = (i18n.language || 'en').split('-')[0]
+  const videoSrc = `${import.meta.env.BASE_URL}tutorial/tutorial-${VIDEO_LANGS.includes(lang) ? lang : 'en'}.mp4`
+
+  if (showVideo) {
+    return createPortal(
+      <div className="fixed inset-0 flex flex-col items-center justify-center p-3" style={{ zIndex: 10000, background: 'rgba(0,0,0,0.95)' }}>
+        <div className="w-full max-w-[400px] flex items-center justify-between mb-2">
+          <button onClick={() => setShowVideo(false)}
+            className="flex items-center gap-1.5 px-3 py-2 rounded-xl active:scale-95 transition-transform"
+            style={{ background: 'rgba(255,255,255,0.12)' }}>
+            <ArrowLeft className="w-4 h-4 text-white" />
+            <span className="text-white text-sm font-medium">{t('howto_title')}</span>
+          </button>
+          <button onClick={onClose} aria-label={t('howto_close')}
+            className="w-10 h-10 rounded-full flex items-center justify-center active:scale-90 transition-transform"
+            style={{ background: 'rgba(255,255,255,0.12)' }}>
+            <X className="w-5 h-5 text-white" />
+          </button>
+        </div>
+        <video
+          key={videoSrc}
+          src={videoSrc}
+          controls
+          autoPlay
+          playsInline
+          preload="metadata"
+          className="rounded-2xl bg-black"
+          style={{ width: '100%', maxWidth: 400, maxHeight: 'calc(100vh - 80px)', objectFit: 'contain' }}
+        />
+      </div>,
+      document.body
+    )
+  }
 
   const atEnd = idx === SCENES.length - 1 && !playing && elapsed >= SCENE_MS
   const go = (n) => { setIdx(Math.max(0, Math.min(SCENES.length - 1, n))); setElapsed(0); setPlaying(true) }
@@ -216,6 +252,16 @@ export default function HowToPlay({ open, onClose }) {
           <div className="text-white/40 text-xs font-semibold mb-1">{idx + 1} / {SCENES.length}</div>
           <h3 className="text-white font-bold text-lg leading-tight mb-1.5">{emoji} {t(`howto_${key}_title`)}</h3>
           <p className="text-white/65 text-sm leading-relaxed">{t(`howto_${key}_body`)}</p>
+        </div>
+
+        {/* Full video tutorial */}
+        <div className="px-4 pb-3">
+          <button onClick={() => { setPlaying(false); setShowVideo(true) }}
+            className="w-full py-3 rounded-xl font-semibold text-sm text-white flex items-center justify-center gap-2 active:scale-[0.98] transition-transform"
+            style={{ background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.22)' }}>
+            <Film className="w-4 h-4 text-cyan-300" />
+            {t('howto_video')}
+          </button>
         </div>
 
         {/* Controls */}

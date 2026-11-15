@@ -111,7 +111,7 @@ export default function CompletionScreen({ tour, tourProgress, teamName, lifetim
             <p className="text-white/60 text-sm mt-3 leading-relaxed max-w-[320px] mx-auto whitespace-pre-line">{cfg.message}</p>
           ) : (
             <p className="text-white/50 text-sm mt-3">
-              <span className="text-white font-semibold">{teamName}</span> finished{' '}
+              <span className="text-white font-semibold">{teamName}</span> {t('completion_finished')}{' '}
               <span className="text-white font-semibold">{tour.title}</span>
             </p>
           )}

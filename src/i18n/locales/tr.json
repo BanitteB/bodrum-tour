@@ -229,5 +229,17 @@
   "howto_s4_title": "Görevi çöz",
   "howto_s4_body": "Fotoğraf çek, bilmece çöz, bir kod bul ya da bir soruyu yanıtla. Takıldın mı? İpucu kullan.",
   "howto_s5_title": "Puan topla ve devam et",
-  "howto_s5_body": "Puan kazan, sonra \"Devam Et\" ile sonraki durağa geç. Yukarıdaki adımlardan (✓) istediğin zaman geri dönebilirsin."
+  "howto_s5_body": "Puan kazan, sonra \"Devam Et\" ile sonraki durağa geç. Yukarıdaki adımlardan (✓) istediğin zaman geri dönebilirsin.",
+  "challenge_hint_unlocked": "İpucu açıldı — görmek için dokun",
+  "challenge_attempts": "{{count}} deneme · Devam et!",
+  "mc_submit": "Cevabı onayla",
+  "mc_error": "Tam değil — başka bir seçenek dene.",
+  "hunt_instruction": "Bunu gerçek dünyada bul — sonra ne olduğunu yaz",
+  "hunt_placeholder": "Bu nedir?",
+  "hunt_error": "Tam değil — daha dikkatli bak ve tekrar dene.",
+  "hunt_found": "Buldun!",
+  "hunt_label": "Resim Avı",
+  "mc_label": "Doğru cevabı seç",
+  "completion_finished": "tamamladı:",
+  "howto_video": "Video eğitimin tamamını izle (3 dk)"
 }

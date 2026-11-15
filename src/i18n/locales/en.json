@@ -229,5 +229,17 @@
   "howto_s4_title": "Solve the challenge",
   "howto_s4_body": "Take a photo, crack a riddle, find a code or answer a question. Stuck? Use a hint.",
   "howto_s5_title": "Collect points & keep going",
-  "howto_s5_body": "Earn points, then tap \"Continue\" for the next stop. Tap a finished step (✓) anytime to go back to it."
+  "howto_s5_body": "Earn points, then tap \"Continue\" for the next stop. Tap a finished step (✓) anytime to go back to it.",
+  "challenge_hint_unlocked": "Hint unlocked — tap to reveal",
+  "challenge_attempts": "{{count}} attempts · Keep going!",
+  "mc_submit": "Confirm answer",
+  "mc_error": "Not quite — try another option.",
+  "hunt_instruction": "Find this in the real world — then type what it is",
+  "hunt_placeholder": "What is this?",
+  "hunt_error": "Not quite — look closer and try again.",
+  "hunt_found": "You found it!",
+  "hunt_label": "Image Hunt",
+  "mc_label": "Choose the answer",
+  "completion_finished": "finished",
+  "howto_video": "Watch the full video tutorial (3 min)"
 }

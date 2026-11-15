@@ -28,7 +28,7 @@ A Goosechase-style self-guided tour app for Bodrum, Turkey — built with React 
 
 ```bash
 # 1. Clone and install
-git clone https://github.com/BettyGshunt/bodrum-tour.git
+git clone https://github.com/BanitteB/bodrum-tour.git
 cd bodrum-tour
 npm install
 

@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Compass, ChevronRight, Star, Clock, MapPin } from 'lucide-react'
 import LanguageSelector from '../ui/LanguageSelector'
 import { fetchAppConfig } from '../../lib/api'
+import { unlockArrivalSound } from '../../lib/arrivalSound'
 
 export default function WelcomeScreen({ onStart, stats }) {
   const { t, i18n } = useTranslation()
@@ -23,6 +24,7 @@ export default function WelcomeScreen({ onStart, stats }) {
   const handleSubmit = (e) => {
     e.preventDefault()
     setTouched(true)
+    unlockArrivalSound() // iOS: audio must be unlocked inside a user tap
     if (isValid) onStart(teamName.trim())
   }
 

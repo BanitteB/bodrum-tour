@@ -9,6 +9,7 @@ import MapView from '../ui/MapView'
 import { useGeolocation, retryGeolocation } from '../../hooks/useGeolocation'
 import { getDistanceMeters, formatDistance } from '../../lib/geo'
 import { fetchAppConfig } from '../../lib/api'
+import { playArrivalSound } from '../../lib/arrivalSound'
 
 const GPS_RADIUS = 10    // metres — "you're here" arrival radius (badge + toast)
 const REACH_RADIUS = 10  // metres — close enough to open & do a stop; matches MissionScreen's COMPLETE_RADIUS.
@@ -251,6 +252,20 @@ export default function MissionHubScreen({ tour, tourProgress, teamName, onOpenM
       return prev
     })
   }, [targetDist])
+
+  // Arrival chime: play once per stop when the player enters its "you're here"
+  // zone. Remembered per tab (sessionStorage) so re-entering the hub or
+  // wobbling at the edge of the radius doesn't repeat it.
+  const targetId = targetMission?.id
+  useEffect(() => {
+    if (!arrivedTarget || targetId == null) return
+    const key = `bodrum-chimed-${tour.id}`
+    let chimed = []
+    try { chimed = JSON.parse(sessionStorage.getItem(key) || '[]') } catch { /* ignore */ }
+    if (chimed.includes(targetId)) return
+    try { sessionStorage.setItem(key, JSON.stringify([...chimed, targetId])) } catch { /* ignore */ }
+    playArrivalSound()
+  }, [arrivedTarget, targetId, tour.id])
 
   // Auto-dismiss the "why you can't start this yet" hint after 4 s
   useEffect(() => {

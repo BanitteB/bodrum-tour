@@ -6,7 +6,7 @@ import { useGeolocation } from '../../hooks/useGeolocation'
 import { getDistanceMeters } from '../../lib/geo'
 
 const SKIP_RADIUS = 300      // metres — skip button visible when within this range
-const COMPLETE_RADIUS = 300  // metres — challenge locked when farther than this
+const COMPLETE_RADIUS = 10   // metres — challenge locked when farther than this
 
 const SKIP_REASON_IDS = ['construction', 'accessibility', 'closed', 'notfound', 'other']
 import PhotoChallenge from '../challenges/PhotoChallenge'

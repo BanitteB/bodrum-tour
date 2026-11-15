@@ -10,8 +10,8 @@ import { useGeolocation } from '../../hooks/useGeolocation'
 import { getDistanceMeters, formatDistance } from '../../lib/geo'
 import { fetchAppConfig } from '../../lib/api'
 
-const GPS_RADIUS = 50    // metres — "you're here" arrival radius (badge + toast)
-const REACH_RADIUS = 300 // metres — close enough to open & do a stop; matches MissionScreen's COMPLETE_RADIUS.
+const GPS_RADIUS = 10    // metres — "you're here" arrival radius (badge + toast)
+const REACH_RADIUS = 10  // metres — close enough to open & do a stop; matches MissionScreen's COMPLETE_RADIUS.
                          // GPS in town can drift 50–150 m, so gating opening at 50 m left players unable to
                          // start a stop they were standing at.
 
@@ -274,7 +274,7 @@ export default function MissionHubScreen({ tour, tourProgress, teamName, onOpenM
       return
     }
 
-    // Distance gate (both tour types): same 300m reach radius as the challenge,
+    // Distance gate (both tour types): same 10m reach radius as the challenge,
     // so GPS drift won't block you when you're actually there.
     // Skipped entirely when the tour has "Bypass GPS" switched on (testing).
     if (!tour.bypassGps && gpsActive && mission.coordinates) {

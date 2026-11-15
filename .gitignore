@@ -6,3 +6,4 @@ dist
 # Supabase CLI local cache
 supabase/.temp
 scripts/tutorial-video/out*/
+__pycache__/
